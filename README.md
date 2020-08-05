@@ -11,7 +11,7 @@
 | last-name  | string | null: false |
 | first-kana | string | null: false |
 | last-kana  | string | null: false |
-| birth-day  | string | null: false |
+| birth-day  | date   | null: false |
 
 ### Association
 
@@ -48,20 +48,18 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user-id   | references | null: false, foreign_key: true |
-| item-id  | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - has_one :deliveries
 
 ## deliveries テーブル
 
 | Column       | Type   | Options     |
 | -------      | ------ | ----------- |
-| postal-code  | string |             |
+| postal-code  | string | null: false |
 | city         | string | null: false |
 | block-num    | string | null: false |
 | building     | string |             |
@@ -72,7 +70,7 @@
 
 - belongs_to :purchase
 - belongs_to :item
-- belongs_to_active_hash :prefectures
+- belongs_to_active_hash :prefecture
 
 # active_hash
 --------------------
