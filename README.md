@@ -26,6 +26,11 @@
 | item-name | string | null: false |
 | comment   | text   | null: false |
 | price     | integer | null: false |
+| category-id    | integer | null: false |
+| status-id      | integer | null: false |
+| burden-id      | integer | null: false |
+| ship-origin-id | integer | null: false |
+| ship-day-id    | integer | null: false |
 
 ### Association
 
@@ -54,13 +59,14 @@
 
 ## deliveries テーブル
 
-| Column      | Type   | Options     |
-| -------     | ------ | ----------- |
-| postal-code | string |             |
-| city        | string | null: false |
-| block-num   | string | null: false |
-| building    | string |             |
-| phone       | string | null: false |
+| Column       | Type   | Options     |
+| -------      | ------ | ----------- |
+| postal-code  | string |             |
+| city         | string | null: false |
+| block-num    | string | null: false |
+| building     | string |             |
+| phone        | string | null: false |
+| prefecture-id | string | null: false |
 
 ### Association
 
