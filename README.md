@@ -31,6 +31,7 @@
 | burden-id      | integer | null: false |
 | ship-origin-id | integer | null: false |
 | ship-day-id    | integer | null: false |
+| user      | references | null: false, foreign_key: true |
 
 ### Association
 
