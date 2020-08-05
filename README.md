@@ -23,7 +23,7 @@
 | Column    | Type   | Options     |
 | ------    | ------ | ----------- |
 | image     | string | null: false |
-| item-name | string | null: false |
+| name      | string | null: false |
 | comment   | text   | null: false |
 | price     | integer | null: false |
 | category-id    | integer | null: false |
@@ -52,25 +52,25 @@
 | item   | references | null: false, foreign_key: true |
 
 ### Association
-
-- has_one :deliveries
-
-## deliveries テーブル
-
-| Column       | Type   | Options     |
-| -------      | ------ | ----------- |
-| postal-code  | string | null: false |
-| city         | string | null: false |
-| block-num    | string | null: false |
-| building     | string |             |
-| phone        | string | null: false |
-| prefecture-id | string | null: false |
-
-### Association
-
-- belongs_to :purchase
+- belongs_to :user
 - belongs_to :item
 - belongs_to_active_hash :prefecture
+
+## deliveriesテーブル
+
+| Column       | Type    | Options     |
+| ------       | ------  | ----------- |
+| postal-code  | string  | null: false |
+| city         | string  | null: false |
+| block-num    | string  | null: false |
+| building     | string  |             |
+| phone        | string  | null: false |
+| prefecture-id | integer | null: false |
+| item         | references | null: false, foreign_key: true |
+
+- belongs_to :item
+- belongs_to_active_hash :prefecture
+
 
 # active_hash
 --------------------
