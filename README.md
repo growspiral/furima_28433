@@ -29,9 +29,14 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :purchases
-
+- has_one :deliveries
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :burden
+- belongs_to_active_hash :ship-origin
+- belongs_to_active_hash :ship-day
 
 
 ## purchases テーブル
@@ -39,12 +44,12 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user-id   | references | null: false, foreign_key: true |
-| items-id  | references | null: false, foreign_key: true |
+| item-id  | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :deliveries
 
 ## deliveries テーブル
@@ -59,4 +64,21 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
+- belongs_to :item
+- belongs_to_active_hash :prefectures
+
+# active_hash
+--------------------
+## categories
+
+## statuses
+
+## burdens
+
+## ship-origins
+
+## ship-days
+
+## prefectures
+
