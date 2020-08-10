@@ -8,6 +8,6 @@ FactoryBot.define do
     burden_id           {3}              
     ship_origin_id      {3}
     ship_day_id         {3}
-    user
+    association :user
   end
 end
