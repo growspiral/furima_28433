@@ -133,19 +133,14 @@
         <div class='item-img-content'>
         
           <%= image_tag item.image, class: "item-img" if item.image.attached? %>
-        
-          
-      
-
-          <% @purchases.each do |purchase| %>
-          <% if item.id == purchase.item_id %>
-          
+          <% @purchase = Purchase.where(item_id: item.id) %>
+          <% if @purchase.present? %>
           <div class='sold-out'>
            
             <span>Sold Out!!</span>         
           </div>
           <% end %>
-          <% end %>
+    
        
 
         </div>
@@ -183,9 +178,9 @@
             </div>
           </div>
         </div>
-        <% end %>
-        <% end %>
       </li>
+        <% end %>
+        <% end %>
       
     </ul>
   </div>
