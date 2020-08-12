@@ -45,7 +45,7 @@
 - belongs_to_active_hash :ship-day
 
 
-## purchases テーブル
+## transactions テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
