@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.order("created_at DESC")
-    @purchases = Purchase.all
+    @items = Item.all.order('created_at DESC')
+    
+    
   end
 
   def new
@@ -18,6 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @user = current_user
+    @purchase = Purchase.where(item_id: @item.id)
   end
 
   private
