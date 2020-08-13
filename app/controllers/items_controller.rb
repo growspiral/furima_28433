@@ -4,8 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
-    
-    
   end
 
   def new
@@ -22,21 +20,18 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
     @user = current_user
     @purchase = Purchase.where(item_id: @item.id)
   end
 
   def edit
-   
   end
 
   def update
-      
     if @item.update(item_params)
       redirect_to root_path
     else
-        render :edit
+      render :edit
     end
   end
 
@@ -47,7 +42,6 @@ class ItemsController < ApplicationController
     else
       render :show
     end
-
   end
 
   private
@@ -55,13 +49,12 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :comment, :price, :category_id, :status_id, :burden_id, :ship_origin_id, :ship_day_id).merge(user_id: current_user.id)
   end
+
   def set_item
     @item = Item.find(params[:id])
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in?
   end
 end
