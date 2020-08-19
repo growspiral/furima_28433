@@ -7,6 +7,8 @@ function itemPrice() {
       const price = document.getElementById("item-price").value
        salesCommission.innerHTML = price / 10
        salesProfit.innerHTML = price - salesCommission.innerHTML
+       
+       e.preventDefault();
   })
 }
 setInterval(itemPrice, 1000);

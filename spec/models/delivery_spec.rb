@@ -1,5 +1,11 @@
 require 'rails_helper'
+describe Delivery, type: :model do
+  before do
 
-RSpec.describe Delivery, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+
+
+
+
+        
 end
