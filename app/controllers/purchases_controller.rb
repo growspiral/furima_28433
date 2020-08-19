@@ -7,13 +7,12 @@ class PurchasesController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-  
-    
+
     @purchase = UserPurchase.new(purchase_params)
     if @purchase.valid?
       pay_item
       @purchase.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -28,26 +27,20 @@ class PurchasesController < ApplicationController
   def token_params
     params.permit(:token)
   end
+
   def pay_item
-    
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: token_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類
+      amount: @item.price, # 商品の値段
+      card: token_params[:token], # カードトークン
+      currency: 'jpy' # 通貨の種類
     )
   end
 
   def move_to_index
     @item = Item.find(params[:item_id])
     @purchase = Purchase.where(item_id: @item.id)
-    unless user_signed_in?
-      redirect_to root_path
-    end
-    if @purchase.present? || user_signed_in? && (current_user.id == @item.user.id)
-      redirect_to root_path
-    end
-
+    redirect_to root_path unless user_signed_in?
+    redirect_to root_path if @purchase.present? || user_signed_in? && (current_user.id == @item.user.id)
   end
-
 end

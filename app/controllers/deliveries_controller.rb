@@ -5,8 +5,6 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-   
-   
     @delivery = Delivery.new(delivery_params)
     if @delivery.save
       redirect_to root_path
@@ -20,7 +18,4 @@ class DeliveriesController < ApplicationController
   def delivery_params
     params.require(:delivery).permit(:postal_code, :city, :block_num, :building, :phone, :prefecture_id, :item_id).merge(item_id: params[:item_id])
   end
-  
 end
-
-
