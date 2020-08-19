@@ -29,6 +29,11 @@ describe UserPurchase, type: :model do
         expect(@buyer.errors.full_messages).to include("Postal code can't be blank")
       end
       it '都道府県が空だと購入できない' do
+        @buyer.prefecture_id = nil
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Prefecture can't be blank")
+      end
+      it '都道府県が--だと購入できない' do
         @buyer.prefecture_id = 1
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include("Prefecture can't be blank")
