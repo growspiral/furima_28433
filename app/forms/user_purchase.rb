@@ -5,8 +5,10 @@ class UserPurchase
   validates :prefecture_id, presence: true
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :postal_code, :city, :block_num, :phone, presence: true
-  validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: '-(ハイフン)を含めて入力してください' }
-  validates :phone, format: { with: /\A\d{,11}\z/, message: '-(ハイフン)を含めず入力してください' }
+  POSTALCODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
+  validates_format_of :postal_code, with: POSTALCODE_REGEX, message: '-(ハイフン)を含めて入力してください' 
+  PHONE_REGEX = /\A\d{,11}\z/.freeze
+  validates_format_of :phone, with: PHONE_REGEX, message: '-(ハイフン)を含めず入力してください' 
 
   def save
     Purchase.create(user_id: user_id, item_id: item_id)
